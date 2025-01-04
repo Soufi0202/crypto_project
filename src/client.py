@@ -3,7 +3,7 @@ import os
 import time
 from dh import deserialize_parameters, generate_keys, serialize_public_key, deserialize_public_key, compute_shared_secret, derive_symmetric_key, encrypt_message, decrypt_message
 
-# Step 1: Read DH parameters from the file
+
 with open("dh_parameters.pem", "rb") as f:
     parameters_bytes = f.read()
 parameters = deserialize_parameters(parameters_bytes)
