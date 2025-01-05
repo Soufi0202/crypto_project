@@ -32,7 +32,7 @@ with open("client_public_key.pem", "rb") as f:
 client_public_key = deserialize_public_key(client_public_key_bytes)
 
 # Step 7: Compute shared secret
-server_shared_secret = compute_shared_secret(server_private_key, client_public_key)
+server_shared_secret = compute_shared_secret(server_private_key, client_public_key, parameters.parameter_numbers().p)
 
 # Step 8: Derive symmetric key
 server_symmetric_key = derive_symmetric_key(server_shared_secret)

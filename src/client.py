@@ -3,7 +3,7 @@ import os
 import time
 from dh import deserialize_parameters, generate_keys, serialize_public_key, deserialize_public_key, compute_shared_secret, derive_symmetric_key, encrypt_message, decrypt_message
 
-
+# Step 1: Read DH parameters from the file
 with open("dh_parameters.pem", "rb") as f:
     parameters_bytes = f.read()
 parameters = deserialize_parameters(parameters_bytes)
@@ -29,7 +29,7 @@ with open("server_public_key.pem", "rb") as f:
 server_public_key = deserialize_public_key(server_public_key_bytes)
 
 # Step 6: Compute shared secret
-client_shared_secret = compute_shared_secret(client_private_key, server_public_key)
+client_shared_secret = compute_shared_secret(client_private_key, server_public_key, parameters.parameter_numbers().p)
 
 # Step 7: Derive symmetric key
 client_symmetric_key = derive_symmetric_key(client_shared_secret)
